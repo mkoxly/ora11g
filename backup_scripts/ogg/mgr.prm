@@ -1,0 +1,95 @@
+PORT 9080
+DYNAMICPORTLIST
+AUTOSTART:
+AUTORESTART:
+PURGEOLDEXTRACTS:
+
+PORT 7809
+DYNAMICPORTLIST 7810-7820, 7830
+AUTOSTART ER t*
+AUTORESTART ER t*, RETRIES 4, WAITMINUTES 4
+STARTUPVALIDATIONDELAY 5
+PURGEOLDEXTRACTS /ogg/dirdat/tt*, USECHECKPOINTS, MINKEEPHOURS 2
+
+
+EXTRACT e_all_b
+SETENV (ORACLE_SID=ORCL)
+USERID <username> password <password>
+RMTHOST <HOST_NAME>, MGRPORT 7809 
+RMTTRAIL ./dirdat/b1
+DISCARDFILE ./dirrpt/e_all_b.dsc, APPEND 
+REPORTCOUNT EVERY 30 MINUTES, RATE
+TRANLOGOPTIONS ARCHIVEDLOGONLY
+TRANLOGOPTIONS ALTARCHIVELOGDEST PRIMARY /oracle/archive/
+TRANLOGOPTIONS ARCHIVEDLOGFORMAT <format>
+FETCHOPTIONS, NOUSESNAPSHOT, NOUSELATESTVERSION, MISSINGROW REPORT     
+STATOPTIONS REPORTFETCH
+TABLE SOURCE.*
+start extract patas
+
+create subdirs
+
+GGSCI (demodb) 3> add CHECKPOINTTABLE
+
+No checkpoint table specified, using GLOBALS specification (ggs.chkpt)...
+
+Successfully created checkpoint table ggs.chkpt.
+
+
+sys:
+alter system set recyclebin=off scope=spfile;
+alter database force logging;
+ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
+SELECT SUPPLEMENTAL_LOG_DATA_MIN FROM V$DATABASE;
+alter system set enable_goldengate_replication=TRUE;
+
+
+exp:
+create user ggs identified by ggs account unlock ;
+grant CREATE SESSION, ALTER SESSION to ggs;
+grant RESOURCE to ggs;
+grant CONNECT to ggs;
+grant SELECT ANY DICTIONARY to ggs;
+grant FLASHBACK ANY TABLE to ggs;
+grant SELECT ANY TABLE to ggs;
+grant SELECT on dba_clusters to ggs;
+grant EXECUTE on DBMS_FLASHBACK  to ggs;
+grant select any transaction to ggs;
+grant execute on utl_file to ggs;
+exec dbms_goldengate_auth.grant_admin_privilege('ggs');
+
+
+rep:
+create user ggs identified by ggs account unlock ;
+grant RESOURCE to ggs;
+grant CONNECT to ggs;
+grant SELECT ANY DICTIONARY to ggs;
+grant SELECT ANY TABLE to ggs;
+grant CREATE TABLE to ggs;
+grant LOCK ANY TABLE to ggs;
+grant INSERT any table to ggs;
+grant UPDATE any table to ggs;
+grant DELETE any table to ggs;
+grant drop any table to ggs;
+exec dbms_goldengate_auth.grant_admin_privilege('ggs');
+
+
+ADD EXTRACT EATAS, TRANLOG, BEGIN NOW, THREADS 1
+ADD EXTTRAIL ./dirdat/ea, EXTRACT EATAS
+ADD EXTRACT PATAS, EXTTRAILSOURCE ./dirdat/ea
+ADD RMTTRAIL ./dirdat/pa, EXTRACT PATAS
+
+
+ADD REPLICAT RATAS, EXTTRAIL ./dirdat/pa, BEGIN now, CHECKPOINTTABLE ggs.chkpt
+
+
+
+ADD TRANDATA finance.acct
+
+
+
+
+
+
+
+

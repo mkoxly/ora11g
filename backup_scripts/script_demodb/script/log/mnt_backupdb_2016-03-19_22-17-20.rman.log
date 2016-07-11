@@ -1,0 +1,68 @@
+
+Recovery Manager: Release 11.2.0.4.0 - Production on Sat Mar 19 22:17:50 2016
+
+Copyright (c) 1982, 2011, Oracle and/or its affiliates.  All rights reserved.
+
+connected to target database: ORCL (DBID=1434702331)
+
+RMAN> 2> 3> 4> 5> 6> 7> 8> 9> 
+using target database control file instead of recovery catalog
+RMAN retention policy will be applied to the command
+RMAN retention policy is set to recovery window of 3 days
+no obsolete backups found
+
+allocated channel: ORA_DISK_1
+channel ORA_DISK_1: SID=2653 device type=DISK
+crosschecked backup piece: found to be 'AVAILABLE'
+backup piece handle=/data/app/oracle/fast_recovery_area/ORCL/backupset/2016_03_19/o1_mf_annnn_TAG20160319T215112_cgtpbjvm_.bkp RECID=1 STAMP=906933072
+crosschecked backup piece: found to be 'AVAILABLE'
+backup piece handle=/data/app/oracle/fast_recovery_area/ORCL/autobackup/2016_03_19/o1_mf_s_906933073_cgtpbkyx_.bkp RECID=2 STAMP=906933073
+crosschecked backup piece: found to be 'AVAILABLE'
+backup piece handle=/data/app/oracle/fast_recovery_area/ORCL/backupset/2016_03_19/o1_mf_annnn_TAG20160319T221640_cgtqt8sn_.bkp RECID=3 STAMP=906934600
+crosschecked backup piece: found to be 'AVAILABLE'
+backup piece handle=/data/app/oracle/fast_recovery_area/ORCL/autobackup/2016_03_19/o1_mf_s_906934601_cgtqt9xc_.bkp RECID=4 STAMP=906934601
+crosschecked backup piece: found to be 'AVAILABLE'
+backup piece handle=/data/app/oracle/fast_recovery_area/ORCL/backupset/2016_03_19/o1_mf_nnndf_FULL2016_03_19_22_17_cgtqvksz_.bkp RECID=5 STAMP=906934641
+crosschecked backup piece: found to be 'AVAILABLE'
+backup piece handle=/data/app/oracle/fast_recovery_area/ORCL/backupset/2016_03_19/o1_mf_nnndf_FULL2016_03_19_22_17_cgtqvksw_.bkp RECID=6 STAMP=906934641
+crosschecked backup piece: found to be 'AVAILABLE'
+backup piece handle=/data/app/oracle/fast_recovery_area/ORCL/autobackup/2016_03_19/o1_mf_s_906934666_cgtqwbo1_.bkp RECID=7 STAMP=906934666
+crosschecked backup piece: found to be 'AVAILABLE'
+backup piece handle=/data/app/oracle/fast_recovery_area/ORCL/backupset/2016_03_19/o1_mf_annnn_TAG20160319T221747_cgtqwcy5_.bkp RECID=8 STAMP=906934667
+crosschecked backup piece: found to be 'AVAILABLE'
+backup piece handle=/data/app/oracle/fast_recovery_area/ORCL/backupset/2016_03_19/o1_mf_annnn_TAG20160319T221747_cgtqwcyf_.bkp RECID=9 STAMP=906934667
+crosschecked backup piece: found to be 'AVAILABLE'
+backup piece handle=/data/app/oracle/fast_recovery_area/ORCL/autobackup/2016_03_19/o1_mf_s_906934669_cgtqwf1n_.bkp RECID=10 STAMP=906934669
+Crosschecked 10 objects
+
+
+released channel: ORA_DISK_1
+allocated channel: ORA_DISK_1
+channel ORA_DISK_1: SID=2653 device type=DISK
+specification does not match any datafile copy in the repository
+specification does not match any control file copy in the repository
+validation succeeded for archived log
+archived log file name=/data/app/oracle/fast_recovery_area/ORCL/archivelog/2016_03_19/o1_mf_1_21_cgtqvkcc_.arc RECID=3 STAMP=906934641
+validation succeeded for archived log
+archived log file name=/data/app/oracle/fast_recovery_area/ORCL/archivelog/2016_03_19/o1_mf_1_22_cgtqwcsv_.arc RECID=4 STAMP=906934667
+validation succeeded for archived log
+archived log file name=/data/app/oracle/fast_recovery_area/ORCL/archivelog/2016_03_19/o1_mf_1_23_cgtqwctq_.arc RECID=5 STAMP=906934667
+Crosschecked 3 objects
+
+
+using channel ORA_DISK_1
+specification does not match any backup in the repository
+
+released channel: ORA_DISK_1
+allocated channel: ORA_DISK_1
+channel ORA_DISK_1: SID=2653 device type=DISK
+specification does not match any archived log in the repository
+
+RMAN retention policy will be applied to the command
+RMAN retention policy is set to recovery window of 3 days
+using channel ORA_DISK_1
+no obsolete backups found
+
+RMAN> 
+
+Recovery Manager complete.

@@ -1,0 +1,78 @@
+2016-03-19 22:17:20 Now begin to backup ......
+
+Recovery Manager: Release 11.2.0.4.0 - Production on Sat Mar 19 22:17:20 2016
+
+Copyright (c) 1982, 2011, Oracle and/or its affiliates.  All rights reserved.
+
+connected to target database: ORCL (DBID=1434702331)
+
+RMAN> 2> 3> 4> 5> 6> 7> 8> 9> 
+using target database control file instead of recovery catalog
+allocated channel: ch1
+channel ch1: SID=2653 device type=DISK
+
+allocated channel: ch2
+channel ch2: SID=7 device type=DISK
+
+sql statement: alter system archive log current
+
+Starting backup at 2016-03-19 22:17:21
+channel ch1: starting compressed full datafile backup set
+channel ch1: specifying datafile(s) in backup set
+input datafile file number=00005 name=/data/app/oracle/orcl/tas01.dbf
+input datafile file number=00007 name=/data/app/oracle/orcl/tas03.dbf
+input datafile file number=00009 name=/data/app/oracle/orcl/bank01.dbf
+input datafile file number=00002 name=/data/app/oracle/orcl/sysaux01.dbf
+input datafile file number=00010 name=/data/app/oracle/orcl/bank02.dbf
+channel ch1: starting piece 1 at 2016-03-19 22:17:21
+channel ch2: starting compressed full datafile backup set
+channel ch2: specifying datafile(s) in backup set
+input datafile file number=00003 name=/data/app/oracle/orcl/undotbs01.dbf
+input datafile file number=00006 name=/data/app/oracle/orcl/tas02.dbf
+input datafile file number=00008 name=/data/app/oracle/orcl/tas04.dbf
+input datafile file number=00001 name=/data/app/oracle/orcl/system01.dbf
+input datafile file number=00004 name=/data/app/oracle/orcl/users01.dbf
+channel ch2: starting piece 1 at 2016-03-19 22:17:21
+channel ch1: finished piece 1 at 2016-03-19 22:17:36
+piece handle=/data/app/oracle/fast_recovery_area/ORCL/backupset/2016_03_19/o1_mf_nnndf_FULL2016_03_19_22_17_cgtqvksz_.bkp tag=FULL2016-03-19_22-17-20 comment=NONE
+channel ch1: backup set complete, elapsed time: 00:00:15
+channel ch2: finished piece 1 at 2016-03-19 22:17:46
+piece handle=/data/app/oracle/fast_recovery_area/ORCL/backupset/2016_03_19/o1_mf_nnndf_FULL2016_03_19_22_17_cgtqvksw_.bkp tag=FULL2016-03-19_22-17-20 comment=NONE
+channel ch2: backup set complete, elapsed time: 00:00:25
+Finished backup at 2016-03-19 22:17:46
+
+Starting Control File and SPFILE Autobackup at 2016-03-19 22:17:46
+piece handle=/data/app/oracle/fast_recovery_area/ORCL/autobackup/2016_03_19/o1_mf_s_906934666_cgtqwbo1_.bkp comment=NONE
+Finished Control File and SPFILE Autobackup at 2016-03-19 22:17:47
+
+sql statement: alter system archive log current
+
+Starting backup at 2016-03-19 22:17:47
+current log archived
+channel ch1: starting archived log backup set
+channel ch1: specifying archived log(s) in backup set
+input archived log thread=1 sequence=21 RECID=3 STAMP=906934641
+input archived log thread=1 sequence=22 RECID=4 STAMP=906934667
+channel ch1: starting piece 1 at 2016-03-19 22:17:47
+channel ch2: starting archived log backup set
+channel ch2: specifying archived log(s) in backup set
+input archived log thread=1 sequence=23 RECID=5 STAMP=906934667
+channel ch2: starting piece 1 at 2016-03-19 22:17:47
+channel ch1: finished piece 1 at 2016-03-19 22:17:48
+piece handle=/data/app/oracle/fast_recovery_area/ORCL/backupset/2016_03_19/o1_mf_annnn_TAG20160319T221747_cgtqwcy5_.bkp tag=TAG20160319T221747 comment=NONE
+channel ch1: backup set complete, elapsed time: 00:00:01
+channel ch2: finished piece 1 at 2016-03-19 22:17:48
+piece handle=/data/app/oracle/fast_recovery_area/ORCL/backupset/2016_03_19/o1_mf_annnn_TAG20160319T221747_cgtqwcyf_.bkp tag=TAG20160319T221747 comment=NONE
+channel ch2: backup set complete, elapsed time: 00:00:01
+Finished backup at 2016-03-19 22:17:48
+
+Starting Control File and SPFILE Autobackup at 2016-03-19 22:17:48
+piece handle=/data/app/oracle/fast_recovery_area/ORCL/autobackup/2016_03_19/o1_mf_s_906934669_cgtqwf1n_.bkp comment=NONE
+Finished Control File and SPFILE Autobackup at 2016-03-19 22:17:50
+released channel: ch1
+released channel: ch2
+
+RMAN> 
+
+Recovery Manager complete.
+2016-03-19 22:17:50 backup finish ......
